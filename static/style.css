@@ -1,0 +1,28 @@
+.row{
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #1f529e;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.input{
+    text-align: center;
+    background: #80c0dd;
+    width: 50%;
+    border-radius: 18px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.output{
+    text-align: center;
+    width: 50%;
+    border: 2px solid #80c0dd;
+    border-radius: 18px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}

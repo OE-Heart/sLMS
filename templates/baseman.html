@@ -1,0 +1,19 @@
+<style>
+    @import url(./static/style.css);
+</style>
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block body %}
+    {{super()}}
+    <div class="row">
+        <div class="input">
+            {{ wtf.quick_form(form_add) }}
+        </div>
+    
+        <div class="input">
+            {{ wtf.quick_form(form_del) }}
+        </div>
+    </div>
+    
+{% endblock body %}

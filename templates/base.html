@@ -1,0 +1,80 @@
+<style>
+    @import url(./static/style.css);
+</style>
+{% block head %}
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style type="text/css">
+    #submit,
+    #submitadd,
+    #submitdel {
+        display: inline-block;
+        color: #FFF;
+        background-color: #053d6d;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        text-decoration: none;
+        margin-left: 5px;
+        margin-top: 0;
+        margin-bottom: 5px;
+        border-color: #357ebd;
+        border-radius: 8px;
+        white-space: nowrap;
+    }
+</style>
+
+{% endblock head %}
+
+{% block body %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">图书管理系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">HOME<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('bookquery') }}">图书查询</a>
+            </li>
+
+            {% if current_user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('cardman') }}">借书证管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('borrowman') }}">借阅/归还图书</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('bookman') }}">图书管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('batch') }}">批量入库</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">管理员退出</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">管理员登录</a> </li>
+            {% endif %}
+
+    </div>
+</nav>
+{% endblock nav %}
+{% endblock body %}
+
+

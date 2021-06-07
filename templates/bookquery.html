@@ -1,0 +1,34 @@
+<style>
+    @import url(./static/style.css);
+</style>
+{# form list#}
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Book Search{% endblock %}
+
+{% block body %}
+{{super()}}
+
+<div class="row">
+    <div class="input">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="output">
+        {% for item in list %}
+        <div>
+            <p>书号: {{item['BID']}} </p>
+            <p>类别: {{item['category']}}</p>
+            <p>书名: {{item['title']}} </p>
+            <p>出版社: {{item['press']}} </p>
+            <p>出版年份: {{item['year']}} </p>
+            <p>作者: {{item['author']}} </p>
+            <p>价格: {{item['price']}} </p>
+            <p>总藏书量: {{item['total']}} </p>
+            <p>目前库存量: {{item['stock']}} </p>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
